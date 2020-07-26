@@ -1,0 +1,20 @@
+.edit-todo{
+
+    text-align:center;
+    width:100%;
+    background-color:lightseagreen;
+
+
+}
+.edit-todo .todo{
+
+    margin:10px;
+    padding:10px;
+
+
+}
+.edit-todo .todo button:hover{
+
+    background-color:green;
+
+}

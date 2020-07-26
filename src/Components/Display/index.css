@@ -1,0 +1,12 @@
+.display-todos{
+
+    text-align:center;
+    width:100%;
+    background-color:lightseagreen;
+}
+.display-todos h3 {
+
+    text-align: center;
+    padding:10px;
+    margin:10px;
+}
