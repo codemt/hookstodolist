@@ -4,7 +4,7 @@ import axios from 'axios'
 export default function Edit(props) {
 
 
-    const [todo,getTodo] = useState(null)
+    const [todo,setTodo] = useState(null)
     useEffect(()=>{
 
         const id = props.match.params.id
@@ -17,7 +17,7 @@ export default function Edit(props) {
 
 
                 console.log(res.data)
-                getTodo(res.data)
+                setTodo(res.data)
 
             })
 
@@ -27,6 +27,23 @@ export default function Edit(props) {
 
     },[])
 
+   const submit = (e) => {
+        e.preventDefault();
+        const id = e.target.id;
+        alert(id)
+
+        const updateTodo = async() => {
+
+                //await axios.put(``)
+
+        }
+        updateTodo();
+
+    }
+    const HandleChange = (e) => {
+        setTodo(e.target.value)
+    }
+
     console.log(todo);
     return (
         <React.Fragment>
@@ -35,13 +52,15 @@ export default function Edit(props) {
         <div class="todo">
                 {todo != null ? 
                     
-                    <input type="text" value={todo.todo} />
-                
+                    <div class="item">
+                    <input type="text" value={todo.todo} onChange={HandleChange} />
+                    <button onClick={submit} id={todo.id} class="p-4"> submit </button>
+                    </div>
                     :
                     
                     <p> Loading ..</p>
                 }   
-                <button class="p-4"> submit </button>
+        
         </div>  
         </div> 
         
