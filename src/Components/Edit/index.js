@@ -1,7 +1,8 @@
 import React,{ useState, useEffect } from 'react'
 import './index.css'
+import { withRouter } from 'react-router-dom'
 import axios from 'axios'
-export default function Edit(props) {
+function Edit(props) {
 
 
     const [todo,setTodo] = useState(null)
@@ -29,15 +30,30 @@ export default function Edit(props) {
 
    const submit = (e) => {
         e.preventDefault();
-        const id = e.target.id;
-        alert(id)
 
-        const updateTodo = async() => {
+       //const id = e.target.id;
+       const id = props.match.params.id
+       console.log(e.target)
+       console.log(e.target.id)
+        console.log(id)
+        console.log(todo)
+            const updateTodo = async() => {
 
-                //await axios.put(``)
+                await axios.put(`https://todolist-auth-express-server.herokuapp.com/api/todo/`+id,{todo})
+                .then(res => {
+        
+                    console.log(res.data)
+                    setTimeout(()=>{
+                        props.history.push('/')
+                    },500)
+                })
+                .catch(err =>{
 
-        }
-        updateTodo();
+                    console.log(err)
+
+                })
+            }
+            updateTodo();
 
     }
     const HandleChange = (e) => {
@@ -45,6 +61,7 @@ export default function Edit(props) {
     }
 
     console.log(todo);
+    
     return (
         <React.Fragment>
         <div class="p-4 edit-todo">
@@ -67,3 +84,4 @@ export default function Edit(props) {
         </React.Fragment>
     )
 }
+export default withRouter(Edit)

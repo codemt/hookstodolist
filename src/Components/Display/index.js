@@ -28,6 +28,7 @@ export default function Display() {
     return (
         <div class="display-todos">
                 <h3 class="p-4"> My Todos </h3>
+                <Link to="/add"> + </Link>
                 <ul class="p-4">
                     {result != null ? 
                     
